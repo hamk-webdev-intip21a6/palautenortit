@@ -1,0 +1,26 @@
+# .gitignore
+
+# Ignore Django migration files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+.mypy_cache/
+*.sqlite3
+
+# Ignore virtual environment files
+venv/
+.env
+
+# Ignore media and static files
+media/
+static/
+
+# Ignore IDE and text editor files
+.vscode/
+*.swp
+*.swo
+*.swn
+*.idea/
+*.log

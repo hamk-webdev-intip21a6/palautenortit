@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Julkaise uusia kuvia</h1>
+<form method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button button2">Julkaise</button>
+</form>
+
+<p><a href="{% url 'gallery:display_images' %}"
+<button class="button button2"></button>Palaa aloitus sivulle</a></p>
+{% endblock %}

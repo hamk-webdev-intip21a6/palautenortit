@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Luo uusi vieraskirja julkaisu</h1>
+<form method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <button type="submit" class="button button2">Luo uusi julkaisu</button>
+</form>
+<hr>
+<p><a href="{% url 'guestbook:index' %}"
+<button class="button button2"></button>Katso vieraskirjaa</a></p>
+{% endblock %}

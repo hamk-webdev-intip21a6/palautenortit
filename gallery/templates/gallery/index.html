@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <body>
+        <div class="col-md-12">
+            <h1>Galleria</h1>
+            <p><a href="{% url 'gallery:image_upload' %}"
+		<button class="button button2">Lataa uusia kuvia</button>
+		</a></p>
+        </div>
+        {% for post in posts %}
+        <div class="col-md-4">
+            <p>{{ post.description }}</p>
+            <img src="{{ post.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+        </div>
+        {% endfor %}
+    </body>
+{% endblock %}
+

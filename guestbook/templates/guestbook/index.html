@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <h1>Vieraskirja</h1>
+        <p><a href="{% url 'guestbook:post' %}"
+	<button class="button button2"></button>Lisää uusi julkaisu</a></p>
+        {% if posts %}
+        <h2>Julkaisut</h2>
+        <ul class="list-unstyled">
+            {% for post in posts %}
+            <li>
+                <h5><strong>{{ post.author }} {{ post.date }}</strong></h5>
+                <p>{{ post.comment|linebreaks }}</p>
+                <hr>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Julkaisuja ei löydy.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
