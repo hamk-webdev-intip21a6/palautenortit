@@ -5,5 +5,5 @@ This project is a web-based feedback system built with Django. It allows users t
 - User registration and authentication
 - Feedback submission form
 - Admin view for feedback analysis
-- Database integration with SQLite
+- Database integration with SQLite (database ignored with .gitignore)
 - Extras: Guestbook, Gallery
