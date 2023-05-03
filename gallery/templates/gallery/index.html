@@ -1,18 +1,53 @@
 {% extends 'base.html' %}
+
 {% block content %}
     <body>
-        <div class="col-md-12">
-            <h1>Galleria</h1>
-            <p><a href="{% url 'gallery:image_upload' %}"
-		<button class="button button2">Lataa uusia kuvia</button>
-		</a></p>
+        <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <img src="" id="modalImage" class="img-responsive" style="width: 100%;" />
+                    </div>
+                </div>
+            </div>
         </div>
-        {% for post in posts %}
-        <div class="col-md-4">
-            <p>{{ post.description }}</p>
-            <img src="{{ post.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Galleria</h1>
+                    <p><a href="{% url 'gallery:image_upload' %}">
+                        <button class="button button2">Lataa uusia kuvia</button>
+                        </a></p>
+                </div>
+                <div class="grid">
+                    {% for post in posts %}
+                    <div class="img-container" data-src="{{ post.image.url }}">
+                        <p>{{ post.description }}</p>
+                        <img src="{{ post.image.url }}" class="img-responsive" />
+                        <div class="img-overlay"></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        {% endfor %}
     </body>
-{% endblock %}
+    <script>
+        // JavaScript code for handling the click event
+        const imgContainers = document.querySelectorAll(".img-container");
 
+        imgContainers.forEach(container => {
+            container.addEventListener("click", function() {
+                const imgSrc = container.getAttribute("data-src");
+                const modalImage = document.getElementById("modalImage");
+                modalImage.src = imgSrc;
+                $("#imageModal").modal("show");
+            });
+        });
+
+	// Add an event listener for the modal image click
+	const modalImage = document.getElementById("modalImage");
+		modalImage.addEventListener("click", function() {
+    		$("#imageModal").modal("hide");
+});
+    </script>
+{% endblock %}

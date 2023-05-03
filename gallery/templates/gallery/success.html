@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 <p>Kiitos, kuvan lataaminen onnistui!</p>
-<p><a href="{% url 'gallery:image_upload' %}"
-<button class="button button2"></button>Lataa lisää kuvia</a></p>
-<p><a href="{% url 'gallery:display_images' %}"
-<button class="button button2"></button>Palaa aloitus sivulle
+<p><a href="{% url 'gallery:image_upload' %}">
+<button class="button button2">Lataa lisää kuvia</button></a></p>
+<p><a href="{% url 'gallery:display_images' %}">
+<button class="button button2">Palaa aloitus sivulle</button>
 </a></p>
 {% endblock %}

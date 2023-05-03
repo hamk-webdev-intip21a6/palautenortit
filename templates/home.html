@@ -3,27 +3,25 @@
 <h1>Palautejärjestelmä</h1>
 {% if user.is_authenticated %}
     <p>Sisäänkirjautuneena: {{ user }}</p>
-    <p><a href="{% url 'logout' %}"
-	<button class="button button2">Kirjaudu ulos</button>
-	</a></p>
+    <p><a href="{% url 'logout' %}">
+	<button class="button button2">Kirjaudu ulos</button></a></p>
 {% else %}
     <p>Sinun täytyy kirjautua sisään ensin.</p>
-    <p><a href="{% url 'login' %}"
-	<button class="button button2">Kirjaudu sisään</button>
-	</a></p>
-    <p><a href="{% url 'signup' %}"
-	<button class="button button2">Luo uusi käyttäjä</button>
-	</a></p>
+    <p><a href="{% url 'login' %}">
+	<button class="button button2">Kirjaudu sisään</button></a></p>
+    <p><a href="{% url 'signup' %}">
+	<button class="button button2">Luo uusi käyttäjä</button></a></p>
 {% endif %}
 <h2>Pääohjelma</h2>
-	<a href="{% url 'feedback:index' %}"
-	<button class="button button2">Palautteen antaminen</button>
-	</a>
+	<a href="{% url 'feedback:index' %}">
+	<button class="button button2">Palautteen antaminen</button></a>
+<br>
+<br>
 <h3>Muut ohjelmat</h3>
-	<a href="{% url 'guestbook:index' %}"
+	<p><a href="{% url 'guestbook:index' %}">
 	<button class="button button2">Vieraskirja</button>
-	</a>
-	<a href="{% url 'gallery:display_images' %}"
+	</a></p>
+	<p><a href="{% url 'gallery:display_images' %}">
 	<button class="button button2">Galleria</button>
-	</a>
+	</a></p>
 {% endblock %}

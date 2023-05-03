@@ -5,7 +5,7 @@ from .models import Feedback
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
-
+from collections import Counter
 
 @login_required
 def index_success(request):
@@ -27,3 +27,4 @@ class FeedbackCreateView(LoginRequiredMixin, CreateView):
         except ValidationError:
             form.add_error(None, "You have already submitted feedback for this topic.")
             return self.form_invalid(form)
+

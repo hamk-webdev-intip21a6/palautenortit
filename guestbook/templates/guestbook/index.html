@@ -3,19 +3,23 @@
 <div class="row">
     <div class="col">
         <h1>Vieraskirja</h1>
-        <p><a href="{% url 'guestbook:post' %}"
-	<button class="button button2"></button>Lisää uusi julkaisu</a></p>
+        <p><a href="{% url 'guestbook:post' %}">
+        <button class="button button2">Lisää uusi julkaisu</button></a></p>
         {% if posts %}
         <h2>Julkaisut</h2>
-        <ul class="list-unstyled">
+        <div class="row">
             {% for post in posts %}
-            <li>
-                <h5><strong>{{ post.author }} {{ post.date }}</strong></h5>
-                <p>{{ post.comment|linebreaks }}</p>
-                <hr>
-            </li>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>{{ post.author }}</strong></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ post.date|date:'d.m.Y H:i' }}</h6>
+                        <p class="card-text">{{ post.comment|linebreaks }}</p>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-        </ul>
+        </div>
         {% else %}
         <p>Julkaisuja ei löydy.</p>
         {% endif %}
