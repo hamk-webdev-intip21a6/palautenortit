@@ -7,3 +7,13 @@ This project is a web-based feedback system built with Django. It allows users t
 - Admin view for feedback analysis
 - Database integration with SQLite (database ignored with .gitignore)
 - Extras: Guestbook, Gallery
+
+# Palauteprojekti
+Tämä projekti on Django-solelluskehyksellä tehty verkkopohjainen palautejärjestelmä. Se mahdollistaa käyttäjien palautteen antamisen eri aiheista, kun taas ylläpitäjät voivat tarkastella ja analysoida palautetietoja.
+
+### Ominaisuudet
+- Käyttäjien rekisteröinti ja tunnistautuminen
+- Palautetteenanto lomakkeella
+- Ylläpitäjänäkymä palautteen analysointia varten
+- Tietokantaintegraatio SQLite:llä (tietokanta ohitetaan .gitignore-tiedostolla)
+- Ekstrat: vieraskirja, galleria
