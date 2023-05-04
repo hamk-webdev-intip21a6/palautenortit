@@ -1,12 +1,61 @@
-<!--#Create templates/registration/signup.html-->
 {% extends 'base.html' %}
+
 {% block content %}
-<h2>Sign up</h2>
-<form method="post" novalidate>
-  {% csrf_token %}
-  <table>
-  {{ form.as_table }}
-  </table>
-  <button type="submit" class="button button2">Luo uusi käyttäjä</button>
-</form>
+  <style>
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+    .form-container label {
+      margin-bottom: 5px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .password-requirements {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .error-list {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  </style>
+  <h2>Luo uusi käyttäjä</h2>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="form-container">
+      {% for field in form %}
+        <div class="form-field">
+          <label for="{{ field.auto_id }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <ul class="error-list">
+              {% for error in field.errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </div>
+      {% endfor %}
+      <div class="password-requirements">
+        <p>Salasanan vaatimukset:</p>
+        <ul>
+          <li>Salasanasi ei voi olla liian samankaltainen muiden tietojesi kanssa.</li>
+          <li>Salasanasi tulee sisältää ainakin 8 merkkiä.</li>
+          <li>Salasanasi ei voi olla yleisesti käytetty salasana.</li>
+          <li>Salasanasi ei voi olla kokonaan numeerinen.</li>
+        </ul>
+      </div>
+    </div>
+    <button type="submit" class="button button2">Luo uusi käyttäjä</button>
+  </form>
 {% endblock %}
